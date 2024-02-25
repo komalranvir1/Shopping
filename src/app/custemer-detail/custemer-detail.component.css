@@ -1,0 +1,15 @@
+h5{
+    padding-top: 4vh;
+    text-align: center;
+}
+
+.btns{
+padding-top: 3vh;
+text-align: center;
+}
+.container{
+    display: flexbox;
+}
+input{
+    margin: 1vw;
+}

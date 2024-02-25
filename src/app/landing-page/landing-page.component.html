@@ -1,0 +1,7 @@
+<div class="container">
+    <h5>Available Products</h5>
+<div *ngFor="let product of products">
+  <p>{{ product.name }} - ${{ product.price }}</p>
+  <button class="btn btn-outline-primary" (click)="addToCart(product)">Add to Cart</button>
+</div>
+</div>
