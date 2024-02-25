@@ -1,0 +1,24 @@
+h5{
+    text-align: center;
+    padding: 2vh;
+}
+
+img{
+    height: 27vh;
+    width: 15vw;
+    margin: 1vw;
+}
+
+.card{
+    width: 16rem;
+    display: inline-block;
+    margin: 0.5vw;
+}
+.card-body{
+    border-top: 1px solid #c2bbbb;
+}
+
+#bottom{
+    display: flex;
+    justify-content: space-between;
+}

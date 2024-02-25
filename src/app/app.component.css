@@ -1,5 +1,5 @@
 header {
-    background-color: #333;
+    /* background-color: #333; */
     padding: 10px 0;
   }
   nav ul {
@@ -12,6 +12,11 @@ header {
     margin-right: 10px;
   }
   nav ul li a {
-    color: white;
+    font-weight: bold;
+    color: rgb(37, 35, 35);
     text-decoration: none;
+  }
+  .active {
+    color: rgb(40, 55, 169); 
+    border-bottom: 3px solid #2217b4;
   }
