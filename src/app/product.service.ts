@@ -15,16 +15,16 @@ export class ProductService {
     { id: 1, name: 'Watch', price: 100,img:"/assets/Products/watch.jpg" },
     { id: 2, name: 'headPhone', price: 200 ,img:"/assets/Products/HeadPhone.jpg"},
     { id: 3, name: 'Laptop', price: 300 ,img:"/assets/Products/Laptop.jpg"},
-    { id: 3, name: 'Mobile', price: 440 ,img:"/assets/Products/Mobile.jpg"},
+    { id: 4, name: 'Mobile', price: 440 ,img:"/assets/Products/Mobile.jpg"},
 
   ];
   totalPrice: Subject<number> = new BehaviorSubject<number>(0);
   totalQuantity: Subject<number> = new BehaviorSubject<number>(0);
   existingCartItem!: CartItem;
-  //  storage: Storage = localStorage;
+   storage: Storage = sessionStorage;
   constructor( ) {
 
-    let tempItems: any = sessionStorage.getItem("cartItems");
+    let tempItems: any = this.storage.getItem("cartItems");
     let data = JSON.parse(tempItems);
 
 
@@ -112,7 +112,7 @@ export class ProductService {
   }
 
   persistCartItems() {
-    sessionStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+    this.storage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
   logCartData(totalPriceValue: number, totalQuantityValue: number) {
 

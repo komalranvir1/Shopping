@@ -1,11 +1,43 @@
 <div class="container">
   <div>
     <h5>Available Products</h5>
+    <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Add Product</button>
+
 
   </div>
-  <!-- <div> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-      Add Product <i class="ri-add-line"></i>
-    </button></div> -->
+
+
+  <div class="modal fade" id="exampleModalToggle" aria-labelledby="exampleModalToggleLabel" tabindex="-1"
+    aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Add Product</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- product.component.html -->
+          <form [formGroup]="productForm">
+           
+            <div class="col-md-9"> <input type="text" name="name" formControlName="name" placeholder="Name "
+                class="form-control">
+            </div>
+            <div class="col-md-9"> <input type="number" formControlName="price" placeholder="Price" class="form-control">
+            </div>
+            <div class="col-md-9"> <input type="file" name="img" formControlName="img" class="form-control">
+            </div>
+            <!-- <button type="submit">Add Product</button> -->
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+
+          <button class="btn btn-primary" data-bs-toggle="modal" (click)="submit()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 
   <div class="card" *ngFor="let product of products">
@@ -17,13 +49,12 @@
       <h5>{{ product.name }}</h5>
       <div id="bottom">
         <p>Price: ${{ product.price }}</p>
-        <button class="btn btn-outline-primary" (click)="addToCart(product)">Add to Cart <i
-            class="ri-add-line"></i></button>
+        <button class="btn btn-primary" (click)="addToCart(product)"> <i class="ri-add-line"></i></button>
       </div>
     </div>
   </div>
 
 
- 
-  
+
+
 </div>

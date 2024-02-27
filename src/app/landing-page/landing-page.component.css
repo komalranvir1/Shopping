@@ -22,3 +22,7 @@ img{
     display: flex;
     justify-content: space-between;
 }
+
+.modal-body input{
+    margin: 1vw;
+}

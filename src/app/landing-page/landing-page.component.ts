@@ -3,29 +3,41 @@ import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
 import { Product } from '../product';
 import { CartItem } from '../cart-item';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })
-export class LandingPageComponent implements OnInit{
-  product: Product []=[];
-  products: any[]=[];
-  // private products: Product[] = [
-  //   { id: 1, name: 'Watch', price: 100,img:"/assets/Products/watch.jpg" },
-  //   { id: 2, name: 'headPhone', price: 200 ,img:"/assets/Products/HeadPhone.jpg"},
-  //   { id: 3, name: 'Laptop', price: 300 ,img:"/assets/Products/Laptop.jpg"},
-  //   { id: 3, name: 'Mobile', price: 440 ,img:"/assets/Products/Mobile.jpg"},
+export class LandingPageComponent implements OnInit {
+  product: Product = { id: 0, name: '', price: 0, img: '' };
+  products: Product[] = [];
+  productForm: FormGroup;
 
-  // ];
+  constructor(private fb: FormBuilder, private service: ProductService, private router: Router) {
+    this.productForm = this.fb.group({
+      id: ['', Validators.required],
+      img: ['', Validators.required],
+      name: ['', Validators.required],
+      price: ['', Validators.required],
 
-  constructor(private service:ProductService, private router:Router){
-
+    })
   }
- 
+
   ngOnInit(): void {
     this.products = this.service.getProducts();
+
+  }
+
+  submit() {
+    let tempForm = this.productForm.value
+    let imageName = this.productForm.get("img")?.value;
+
+    tempForm.img = "/assets/Products/" + imageName.substring(12, imageName.length);
+    // let productData = sessionStorage.setItem('Products', JSON.stringify(tempForm));
+    // this.products.push(productData);
+    this.products.push(tempForm);
 
   }
 
@@ -34,7 +46,7 @@ export class LandingPageComponent implements OnInit{
     const theCartItem = new CartItem(theProduct);
 
     this.service.addToCart(theCartItem);
-         this.router.navigateByUrl('/shoppingCart');
+    this.router.navigateByUrl('/shoppingCart');
 
   }
 }
